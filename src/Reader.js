@@ -49,7 +49,7 @@ class Reader extends EventEmitter {
 
 	static reverseBuffer(src) {
 
-		const buffer = new Buffer(src.length);
+		const buffer = Buffer.alloc(src.length);
 
 		for (let i = 0, j = src.length - 1; i <= j; ++i, --j) {
 			buffer[i] = src[j];
@@ -350,7 +350,7 @@ class Reader extends EventEmitter {
 		}
 
 		// CMD: Load Authentication Keys
-		const packet = new Buffer([
+		const packet = Buffer.from([
 			0xff, // Class
 			0x82, // INS
 			0x00, // P1: Key Structure (0x00 = Key is loaded into the reader volatile memory.)
@@ -432,7 +432,7 @@ class Reader extends EventEmitter {
 
 		const packet = !obsolete ? (
 			// CMD: Authentication
-			new Buffer([
+			Buffer.from([
 				0xff, // Class
 				0x86, // INS
 				0x00, // P1
@@ -447,7 +447,7 @@ class Reader extends EventEmitter {
 			])
 		) : (
 			// CMD: Authentication (obsolete)
-			new Buffer([
+			Buffer.from([
 				0xff, // Class
 				0x88, // INS
 				0x00, // P1
@@ -518,7 +518,7 @@ class Reader extends EventEmitter {
 		}
 
 		// APDU CMD: Read Binary Blocks
-		const packet = new Buffer([
+		const packet = Buffer.from([
 			0xff, // Class
 			0xb0, // Ins
 			0x00, // P1
@@ -596,7 +596,7 @@ class Reader extends EventEmitter {
 		}
 
 		// APDU CMD: Update Binary Block
-		const packetHeader = new Buffer([
+		const packetHeader = Buffer.from([
 			0xff, // Class
 			0xd6, // Ins
 			0x00, // P1
@@ -664,7 +664,7 @@ class Reader extends EventEmitter {
 		this.logger.info('processing ISO 14443-3 tag', this.card);
 
 		// APDU CMD: Get Data
-		const packet = new Buffer([
+		const packet = Buffer.from([
 			0xff, // Class
 			0xca, // INS
 			0x00, // P1: Get current card UID

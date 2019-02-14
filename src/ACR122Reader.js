@@ -31,7 +31,7 @@ class ACR122Reader extends Reader {
 		];
 
 		// CMD: Direct Transmit (to inner PN532 chip InAutoPoll CMD)
-		const packet = new Buffer([
+		const packet = Buffer.from([
 			0xff, // Class
 			0x00, // INS
 			0x00, // P1
@@ -113,7 +113,7 @@ class ACR122Reader extends Reader {
 
 
 		// CMD: Bi-Color LED and Buzzer Control
-		const packet = new Buffer([
+		const packet = Buffer.from([
 			0xff, // Class
 			0x00, // INS
 			0x40, // P1
@@ -158,7 +158,7 @@ class ACR122Reader extends Reader {
 
 
 		// CMD: Set Buzzer Output Enable for Card Detection
-		const packet = new Buffer([
+		const packet = Buffer.from([
 			0xff, // Class
 			0x00, // INS
 			0x52, // P1
@@ -197,7 +197,7 @@ class ACR122Reader extends Reader {
 		// const picc = 0b01000000;
 
 		// CMD: Set PICC Operating Parameter
-		const packet = new Buffer([
+		const packet = Buffer.from([
 			0xff, // Class
 			0x00, // INS
 			0x51, // P1

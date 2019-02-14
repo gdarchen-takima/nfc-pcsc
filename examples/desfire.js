@@ -168,7 +168,7 @@ nfc.on('reader', async reader => {
 			await selectApplication();
 
 			// step 2
-			const key = new Buffer(desfire.key, 'hex');
+			const key = Buffer.from(desfire.key, 'hex');
 			await authenticate(key);
 
 			// step 3
